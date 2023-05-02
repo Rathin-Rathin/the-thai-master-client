@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import { FaCheck, FaGithub, FaGoogle, FaTimes } from 'react-icons/fa';
 import { Link} from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 const Login = () => {
-    const googleProvider=new GoogleAuthProvider()
+    const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
     const [passError, setPassError] = useState(null);
     const [success, setSuccess] = useState(null);
     //Use context
@@ -34,12 +35,24 @@ const Login = () => {
         signInWithPopup(auth,googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                setPassError(null);
             })
             .catch(error => {
                 const errorMassage = error.message;
                 setPassError(errorMassage);
         })
+    }
+    //Github signIn
+    const handleGitHubSignIn = () => {
+        signInWithPopup(auth,gitHubProvider)
+        .then(result => {
+            const user = result.user;
+            setPassError(null);
+        })
+        .catch(error => {
+            const errorMassage = error.message;
+            setPassError(errorMassage);
+    })
     }
     return (
         <div className="hero min-h-screen bg-base-200 pt-3">
@@ -76,7 +89,7 @@ const Login = () => {
                 </div>
                 <div className='mt-3 font-semibold flex justify-between'>
                     <button onClick={handleGoogleSignIn} className='underline text-blue-600 flex gap-2 items-center'><FaGoogle className='text-green-600 ' />Sign in with google</button>
-                    <Link className='underline flex gap-2 items-center'><FaGithub />Sign in with github</Link>
+                    <button onClick={handleGitHubSignIn} className='underline flex gap-2 items-center'><FaGithub />Sign in with github</button>
                 </div>
             </form>
         </div>
