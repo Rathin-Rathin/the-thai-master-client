@@ -6,6 +6,7 @@ import Main from './layouts/pages/Main/Main.jsx';
 import Home from './layouts/pages/Home/Home.jsx';
 import Blogs from './layouts/pages/Blogs/Blogs';
 import Login from './layouts/pages/Login/Login';
+import Details from './layouts/pages/Details/Details';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element:<Login></Login>
+      },
+      {
+        path: 'details/:id',
+        element: <Details></Details>,
+        loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
       }
     ]
   },
