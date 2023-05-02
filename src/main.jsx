@@ -8,6 +8,7 @@ import Blogs from './layouts/pages/Blogs/Blogs';
 import Login from './layouts/pages/Login/Login';
 import Details from './layouts/pages/Details/Details';
 import Register from './layouts/pages/Register/Register';
+import AuthProviders from './providers/AuthProviders';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,8 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProviders>
     <RouterProvider router={router} />
+    </AuthProviders>
   </React.StrictMode>,
 )
