@@ -22,7 +22,9 @@ const Details = () => {
                 </div>
             </div>
             <div >
-                <h1 className='text-center font-semibold text-3xl my-9'>Chef Recipes</h1>
+                <h1 className=' text-center font-semibold text-3xl mt-9 '>
+                   Chef Recipes
+                </h1>
                 <div className='w-11/12 mx-auto grid grid-cols-3 gap-3'>
                 {
                 recipes.map(recipe => <ShowRecipe
