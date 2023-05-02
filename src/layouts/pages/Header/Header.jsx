@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../../public/thai_logo1.png'
+import logo from '../../../assets/thai_logo1.png'
 import { FaHome, FaBlog, FaSign } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProviders';
 const Header = () => {

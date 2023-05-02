@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { FaCheck, FaGithub, FaGoogle, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
 
 const Login = () => {
+    const googleProvider=new GoogleAuthProvider()
     const [passError, setPassError] = useState(null);
     const [success, setSuccess] = useState(null);
     //Use context
-    const { signInWithEmailAndPass } = useContext(AuthContext);
+    const { signInWithEmailAndPass,auth } = useContext(AuthContext);
     //Handle sign in with email & password
     const handleSignIn = e => {
         e.preventDefault();
@@ -19,11 +22,24 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 setPassError(null);
+               
             })
             .catch(error => {
                 const errorMassage = error.message;
                 setPassError(errorMassage);
+
             })
+    }
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth,googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                const errorMassage = error.message;
+                setPassError(errorMassage);
+        })
     }
     return (
         <div className="hero min-h-screen bg-base-200 pt-3">
@@ -59,7 +75,7 @@ const Login = () => {
                     <button className="btn btn-gray">Submit</button>
                 </div>
                 <div className='mt-3 font-semibold flex justify-between'>
-                    <Link className='underline text-blue-600 flex gap-2 items-center'><FaGoogle className='text-green-600 ' />Sign in with google</Link>
+                    <button onClick={handleGoogleSignIn} className='underline text-blue-600 flex gap-2 items-center'><FaGoogle className='text-green-600 ' />Sign in with google</button>
                     <Link className='underline flex gap-2 items-center'><FaGithub />Sign in with github</Link>
                 </div>
             </form>
