@@ -1,18 +1,21 @@
 import React, { useContext } from 'react';
-import { NavLink, useNavigate} from 'react-router-dom';
+import './Header.css';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/thai_logo1.png'
-import { FaHome, FaBlog, FaSign, } from 'react-icons/fa';
+import { FaHome, FaBlog, FaSign } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProviders';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    const navigate=useNavigate()
+    console.log(user?.displayName);
+    const userName = user?.displayName;
+    const navigate = useNavigate()
     const handleLogout = () => {
         logOut()
             .then(result => {
                 navigate('/login');
-        })
-        .catch(error => console.log(error.message))
-        
+            })
+            .catch(error => console.log(error.message))
+
     }
     return (
         <nav className='px-4 bg-indigo-300   md:bg-black md:flex items-center justify-around'>
@@ -31,20 +34,29 @@ const Header = () => {
                 </div>
 
 
-                <div className=''>{
-                    user ?
+                <div className='show-name'>
+                    {
+                        user ?
 
-                        <img className='w-[50px]' src={logo} alt="" />
-                        : <div className='flex gap-1 items-center'>
-                            <FaSign className='md:text-blue-50' />
-                            <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600 font-bold' : 'font-semibold md:text-blue-50')}>Login</NavLink>
-                        </div>
-                }
+                            <div>
+                                <p className='text-sm hidden user-name z-10 '>${userName}</p>
+
+                                <img className='relative z-0 w-[50px] rounded-full'
+                                    src={user?.photoURL} alt='' />
+                                
+                            </div>
+
+                            : <div className='flex gap-1 items-center'>
+                                <FaSign className='md:text-blue-50' />
+                                <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600 font-bold' : 'font-semibold md:text-blue-50')}>Login</NavLink>
+                            </div>
+                    }
                 </div>
-                {user && <div className='flex gap-1 items-center'>
+                {user &&
+                    <div className='flex gap-1 items-center'>
 
-                    <NavLink className={({ isActive }) => (isActive ? 'text-blue-600 font-bold' : 'font-semibold md:text-blue-50')}>
-                        <button onClick={handleLogout}>Log out</button>
+                    <NavLink onClick={handleLogout} className="text-white font-bold">
+                        Log out
                     </NavLink>
                 </div>}
             </div>

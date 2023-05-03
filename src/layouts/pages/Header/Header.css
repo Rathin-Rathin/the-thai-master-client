@@ -1,0 +1,8 @@
+.show-name :hover p{
+    display:block;
+}
+.user-name{
+    position:absolute;
+    top:-5px;
+    color:blue;
+}
