@@ -8,7 +8,7 @@ const ShowRecipe = ({ recipe }) => {
         <div className="mt-12 card bg-base-100 shadow-xl ">
 
             <figure>
-                <img className='rounded-full w-9/12 mx-auto' src={recipe?.img} alt="" />
+                <img className='mt-9  rounded-full w-9/12 mx-auto' src={recipe?.img} alt="" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{recipe?.recipesName}</h2>
@@ -17,7 +17,9 @@ const ShowRecipe = ({ recipe }) => {
                 {
                     recipe?.ingredients.map(ing =>
                       
-                        <li>{ing}</li>)
+                        <li
+                            key={ing}
+                        >{ing}</li>)
                 }
                 <p className='flex items-center justify-start gap-1'><FaStar className='text-yellow-500' />
                     <FaStar className='text-yellow-500' />

@@ -4,7 +4,8 @@ import { FaHeart} from 'react-icons/fa';
 import ShowRecipe from './ShowRecipe';
 const Details = () => {
     const chefDetails = useLoaderData();
-    const { chefImg, chefName, experiences, chefLike, id, recipes,chefBio } = chefDetails;
+    const { chefImg, chefName, experiences, chefLike, id, recipes, chefBio } = chefDetails;
+    console.log(recipes);
     return (
         <div>
             <div className='mt-6 md:w-9/12 mx-auto flex justify-between items-center'>

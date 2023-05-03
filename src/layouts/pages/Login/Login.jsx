@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FaCheck, FaGithub, FaGoogle, FaTimes } from 'react-icons/fa';
-import { Link} from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
@@ -10,6 +10,10 @@ const Login = () => {
     const gitHubProvider = new GithubAuthProvider();
     const [passError, setPassError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/home";
+    console.log(from);
     //Use context
     const { signInWithEmailAndPass,auth } = useContext(AuthContext);
     //Handle sign in with email & password
@@ -20,9 +24,9 @@ const Login = () => {
         const password = form.password.value;
         signInWithEmailAndPass(email, password)
             .then(result => {
-                const user = result.user;
                 form.reset();
                 setPassError(null);
+                navigate(from,{replace:true})
                
             })
             .catch(error => {
@@ -36,6 +40,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setPassError(null);
+                navigate(from,{replace:true})
             })
             .catch(error => {
                 const errorMassage = error.message;
@@ -48,6 +53,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             setPassError(null);
+            navigate(from,{replace:true})
         })
         .catch(error => {
             const errorMassage = error.message;
