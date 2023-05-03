@@ -17,7 +17,7 @@ const Header = () => {
 
     }
     return (
-        <nav className='px-4 bg-indigo-300   md:bg-black md:flex items-center justify-around'>
+        <nav className='px-4 bg-indigo-300 border-b-2  md:bg-black md:flex items-center justify-around'>
             <div className='flex justify-between md:justify-normal  gap-4 items-center'>
                 <img className='w-[50px]' src={logo} alt="" />
                 <h1 className='text-indigo-600 md:text-blue-50 font-bold text-xl'>The Thai Master</h1>
@@ -38,7 +38,7 @@ const Header = () => {
                         user ?
 
                             <div>
-                                <p className='text-sm hidden user-name z-10 '>${userName}</p>
+                                <p className='text-xl font-bold hidden user-name z-10 '>${userName}</p>
 
                                 <img className='relative z-0 w-[50px] rounded-full'
                                     src={user?.photoURL} alt='' />

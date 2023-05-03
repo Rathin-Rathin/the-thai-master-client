@@ -10,14 +10,14 @@ const Banner = () => {
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={slider1} className="w-full h-6/12" />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide4" className="text-white ">❮</a>
+                <a href="#slide4" className="text-white px-2  ">❮</a>
                     <div className='text-center mx-auto'>
                         <h1 className='mb-3 text-white text-4xl font-bold'>Smart chef every day</h1>
                         <p className='font-bold text-white'>10 recipes every week updates</p>
                         <button className='border rounded-lg text-white px-4 py-2 hover:bg-blue-300 '>ABOUT MORE</button>
                     </div>
                     
-                    <a href="#slide2" className="text-white">❯</a>
+                    <a href="#slide2" className="text-white px-2 ">❯</a>
                 </div>
             </div>
             <div id="slide2" className="carousel-item relative w-full">
