@@ -16,25 +16,29 @@ const router = createBrowserRouter([
     element: <Main></Main>,
     children: [
       {
-        path: 'home',
+        path: '/',
         element:<Home></Home>
+      },
+      {
+        path: 'home',
+        element: <Home></Home>
       }
       , {
         path: 'blogs',
-        element:<Blogs></Blogs>
+        element: <Blogs></Blogs>
       },
       {
-        path:'register',
-        element:<Register></Register>
+        path: 'register',
+        element: <Register></Register>
       },
       {
         path: 'login',
-        element:<Login></Login>
+        element: <Login></Login>
       },
       {
         path: 'details/:id',
         element: <PrivateRoutes><Details></Details></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-thai-master-server-rathin-rathin.vercel.app/chef/${params.id}`)
       }
     ]
   },
@@ -43,7 +47,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProviders>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProviders>
   </React.StrictMode>,
 )
