@@ -10,10 +10,12 @@ import Details from './layouts/pages/Details/Details';
 import Register from './layouts/pages/Register/Register';
 import AuthProviders from './providers/AuthProviders';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
+import Error from './layouts/pages/NotFount/Error';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: '/',
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: 'home',
         element: <Home></Home>
+      }
+      , {
+        path: 'goHome',
+        element:<Home></Home>
       }
       , {
         path: 'blogs',
