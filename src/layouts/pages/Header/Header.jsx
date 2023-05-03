@@ -6,7 +6,6 @@ import { FaHome, FaBlog, FaSign } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProviders';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user?.displayName);
     const userName = user?.displayName;
     const navigate = useNavigate()
     const handleLogout = () => {
