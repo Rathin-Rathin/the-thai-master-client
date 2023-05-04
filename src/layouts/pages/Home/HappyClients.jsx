@@ -5,7 +5,7 @@ import HappyClient from './HappyClient/HappyClient';
 const HappyClients = () => {
     const [clients, setClients] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/feedback`)
+        fetch(`https://the-thai-master-server-rathin-rathin.vercel.app/feedback`)
             .then(res=>res.json())
             .then(data => setClients(data))
         

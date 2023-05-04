@@ -4,7 +4,7 @@ import { FaPaperPlane, FaFacebook, FaGoogle, FaTwitter, FaYoutube } from 'react-
 const Footer = () => {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/food`)
+        fetch(`https://the-thai-master-server-rathin-rathin.vercel.app/food`)
             .then(res => res.json())
             .then(data => setBlogs(data))
 

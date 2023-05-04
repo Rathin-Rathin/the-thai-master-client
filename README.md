@@ -24,6 +24,6 @@ This app is for hiring chef for delicious food, if anyone wants to listen to an 
 - Authentication 
 *--> Firebase *
 
-#### Live site link :- 
+#### Live site link :- https://the-thai-master-client.web.app
 
 - Developed by :- * Rathin Barai Rahul *
